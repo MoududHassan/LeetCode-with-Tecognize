@@ -23,5 +23,18 @@ class Solution:
             if len(stack) == 0:
                 run1.next = None
         return newhead
-            
+
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        temp = None
+        prev = None
+        while head:
+            temp = ListNode(head.val,head.next)
+            if not prev:
+                temp.next = prev
+                prev = temp
+            else:
+                temp.next = prev
+                prev = temp
+            head = head.next
+        return temp
         
