@@ -29,12 +29,18 @@ class Solution:
         prev = None
         while head:
             temp = ListNode(head.val,head.next)
-            if not prev:
-                temp.next = prev
-                prev = temp
-            else:
-                temp.next = prev
-                prev = temp
+            temp.next = prev
+            prev = temp
             head = head.next
         return temp
-        
+    
+    
+        def recu(self, head:Optional[ListNode], prev:Optional[ListNode]):
+            if not head:
+                return prev
+            temp = head.next
+            head.next = prev
+            prev = head
+            return recu(self, temp, prev)
+        result = recu(self,head, None)
+        return result
